@@ -8,41 +8,39 @@ module.exports = () => {
     mode: 'development',
     entry: {
       main: './src/js/index.js',
-      install: './src/js/install.js',
+      install: './src/js/install.js'
     },
     output: {
-      filename: 'bundle.bundle.js',
+      filename: '[name].bundle.js',
       path: path.resolve(__dirname, 'dist'),
     },
     plugins: [
       
       // Generates an HTML file with the links to your generated bundles.
       new HtmlWebpackPlugin({
-        template: './src/index.html',
+        template: './index.html',
         filename: 'index.html',
+        title: 'Home'
       }),
 
       // Generates the Web App Manifest for your PWA, including configuration for icons and other metadata.
       new WebpackPwaManifest({
         name: 'Text Editor',
+        fingerprints: false,
+        inject: true,
         short_name: 'PWA',
         description: 'Naz PWA',
         background_color: '#ffffff',
         theme_color: '#000000',
-        start_url: '/',
+        start_url: './',
+        publicPath: './',
         display: 'standalone',
         icons: [
           {
-            src: path.resolve('src/images/icon.png'),
+            src: path.resolve('src/images/logo.png'),
             sizes: [96, 128, 192, 256, 384, 512],
             destination: path.join('icons', 'ios'),
-          },
-          {
-            src: path.resolve('src/images/icon.png'),
-            sizes: [120, 152, 167, 180],
-            destination: path.join('icons', 'ios'),
-            ios: true,
-          },
+          }
         ],
       }),
 
@@ -58,7 +56,7 @@ module.exports = () => {
         
         // Rules for CSS loaders and Babel. This assumes you'll use style-loader and css-loader for CSS and babel-loader for JavaScript.
         {
-          test: /\.css$/,
+          test: /\.css$/i,
           use: ['style-loader', 'css-loader'],
         },
         {
@@ -68,6 +66,7 @@ module.exports = () => {
             loader: 'babel-loader',
             options: {
               presets: ['@babel/preset-env'],
+              plugins: ['@babel/plugin-proposal-object-rest-spread', '@babel/transform-runtime']
             },
           },
         },
