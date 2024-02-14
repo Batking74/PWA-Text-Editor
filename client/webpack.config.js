@@ -23,7 +23,7 @@ module.exports = () => {
         title: 'Home'
       }),
 
-      // Generates the Web App Manifest for your PWA, including configuration for icons and other metadata.
+      // Generates the Web App Manifest for PWA
       new WebpackPwaManifest({
         name: 'Text Editor',
         fingerprints: false,
@@ -44,7 +44,7 @@ module.exports = () => {
         ],
       }),
 
-      // Configures Workbox to use your custom service worker file (src-sw.js) and generate the final service worker file (service-worker.js).
+      // Configures Workbox to use custom service worker file (src-sw.js) and generate the final service worker file (service-worker.js).
       new InjectManifest({
         swSrc: './src-sw.js',
         swDest: 'service-worker.js',
@@ -54,7 +54,7 @@ module.exports = () => {
     module: {
       rules: [
         
-        // Rules for CSS loaders and Babel. This assumes you'll use style-loader and css-loader for CSS and babel-loader for JavaScript.
+        // Rules for CSS loaders and Babel.
         {
           test: /\.css$/i,
           use: ['style-loader', 'css-loader'],
