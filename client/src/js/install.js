@@ -5,13 +5,10 @@ let deferredPrompt;
 
 // TODO: Add an event handler to the `beforeinstallprompt` event
 window.addEventListener('beforeinstallprompt', (event) => {
-    // Prevent the default behavior of the prompt
     event.preventDefault();
 
-    // Store the event to use it later when the user clicks the install button
     deferredPrompt = event;
 
-    // Show the install button
     butInstall.style.display = 'block';
 });
 
