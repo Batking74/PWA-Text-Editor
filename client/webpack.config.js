@@ -15,12 +15,10 @@ module.exports = () => {
       path: path.resolve(__dirname, 'dist'),
     },
     plugins: [
-      
       // Generates an HTML file with the links to your generated bundles.
       new HtmlWebpackPlugin({
         template: './index.html',
-        filename: 'index.html',
-        title: 'Home'
+        filename: 'index.html'
       }),
 
       // Generates the Web App Manifest for PWA
@@ -31,15 +29,15 @@ module.exports = () => {
         short_name: 'PWA',
         description: 'Naz PWA',
         background_color: '#ffffff',
-        theme_color: '#000000',
-        start_url: './',
-        publicPath: './',
+        theme_color: '#000',
+        start_url: '/',
+        publicPath: '/',
         display: 'standalone',
         icons: [
           {
-            src: path.resolve('src/images/logo.png'),
+            src: './src/images/logo.png',
             sizes: [96, 128, 192, 256, 384, 512],
-            destination: path.join('icons', 'ios'),
+            destination: 'icons'
           }
         ],
       }),

@@ -1,7 +1,7 @@
 {
   "name": "pwa",
   "scripts": {
-    "dev": "webpack-dev-server",
+    "dev": "npm run build && webpack-dev-server",
     "build": "webpack --mode production",
     "start": "webpack-dev-server --mode development --open"
   },

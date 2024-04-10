@@ -25,7 +25,12 @@ export default class {
     // When the editor is ready, set the value to whatever is stored in indexeddb.
     getDb().then((data) => {
       console.info('Loaded data from IndexedDB, injecting into editor');
-      this.editor.setValue(header);
+      if(data) {
+        this.editor.setValue(data);
+      }
+      else {
+        this.editor.setValue(header);
+      }
     });
 
     this.editor.on('change', () => {
